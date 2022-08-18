@@ -13,11 +13,13 @@ a {
 }
 
 img {
-  /* max-width: 100%; */
+  max-width: 100%;
 }
 
 :root {
-  --background-header: linear-gradient(135deg, #8844ee, #B07DFB)
+  --background-header: linear-gradient(135deg, #8844ee, #B07DFB);
+  --background-sidnav: #fafbfc; 
+  --hover: #B07DFB; 
 }
 
 
@@ -106,4 +108,30 @@ img {
 */
 .header li + li { /* Solução de maneira prática sem ter que falar com os filho do "ul" */
   margin-left: 30px;
+}
+
+
+
+
+
+/* Sidenav */
+.sidenav {
+  background: var(--background-sidnav);
+  padding: 30px; /* Padding padrão utilizado no site para as sessões*/
+}
+
+.sidenav li a {
+  display: block; /* Porque por padrão a tag 'a' é display flex*/
+  min-width: 60px; /* colocando esse valor de minimo para o conteiner onde fica a imagem porque caso ele diminua menos do que isso ele acaba estrango a minha imagem svg */
+  max-width: 100px; /* E passando um máximo que o quadrado irá se espandir */
+  margin: 0 auto 30px auto; /* dando um espaçamento externo da tag, sendo 0 para cima, automatico para os lados (para centralizar), e 30px para baixo */
+  background: #FFF;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0px rgba(44,44,44,0.15); /* o 1º valor é para a direira, o 2º para baixo, o 3º é o quanto ele vai se camuflar, e o 4º é para todos os lados */ 
+  transition: .1s ease-in-out; /* Passando uma transição para quando for aplicar o "hover" */
+}
+
+.sidenav li a:hover {
+  background: var(--hover);
 }
