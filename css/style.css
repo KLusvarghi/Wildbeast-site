@@ -13,7 +13,11 @@ a {
 }
 
 img {
-  max-width: 100px;
+  /* max-width: 100%; */
+}
+
+:root {
+  --background-header: linear-gradient(135deg, #8844ee, #B07DFB)
 }
 
 
@@ -53,4 +57,53 @@ img {
 
 .footer {
   grid-area: footer;
+}
+
+
+
+
+
+/* Header */
+
+.header {
+  background: var(--background-header);
+  padding: 30px;
+  display: grid; /* Criando um outro grid que não tem anda haver com o "grid geral" */
+  grid-template-columns: 1fr auto; /* Criando duas colunas, uma de 1fr e outra automatica em relação ao tamanho da página*/
+  align-items: center; /* Alinhando os itens no eixo vertical ao centro */
+}
+
+.logo { /* Aplicando a estilização na ".logo" por que dentro dela tem a tag "img", e assim a .logo" restringi o tamanho da imagem, por que caso aplicasse direto no img, ele ficaria com o mesmo tamnho mas iria expandir o container até o maximo possivel */
+  max-width: 200px;
+}
+
+.header nav ul {
+  display: flex; /* Usanod felx box para quebrar o conteúdo e deixar na mesma linha*/
+  flex-wrap: wrap; /* Para quebrar seus filhos caso não caiba na mesma linha */
+}
+
+.header nav a {
+  display: block; 
+  padding: 10px; /* Para que tenha uma área maior para se clicar */
+  color: #FFF;
+  font-size: 1.125em;
+  background: rgba(0, 0, 0, .1); /* dizendo o ".1" uma opacidade de apenas 10% */
+  border-radius: 5px;
+  transition: 0.1s; /* Colocando o trnasition direto no elemento, por que caso coloque no "hover" ele aplica apenas quando entra, e quando sai ele acaba saindo seco */
+}
+
+.header nav a:hover {
+  background: rgba(0, 0, 0, .5); /* dizendo o ".5" uma opacidade de apenas 50% */
+}
+
+
+/* 
+  ERRO que ocorre: é que quando colocamos margin-left ou rigth para dar o espaçamento entre os elemento, ele acaba aplicando a estilização para todos os elemenento, sendo assim ficando um espaçamento em um dos itens da ponto que fará com que não pposicione corretamente o meu conteúdo em uma tela de desktop ou mobile 
+*/
+
+/* 
+  SOLUÇÃO: com essa expressão "li +li" a estilização só será aplicada para o elemento li que vem seguido de outro elemento li, então nesse caso ele não irá aplicar a estilização par ao primeiro item por que ele não vem seguido de outro "li" por ele ser o primeiro, então basta colocar um "margin-left" que será aplicado neste caso apenas para o segundo e o terceiro(ultimo) item
+*/
+.header li + li { /* Solução de maneira prática sem ter que falar com os filho do "ul" */
+  margin-left: 30px;
 }
