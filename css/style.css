@@ -13,11 +13,13 @@ a {
 }
 
 img {
+  display: block; /* Assim ela irá tirar uma margin que as imagens tem por padrão */
+  border-radius: 5px;
   max-width: 100%;
 }
 
 :root {
-  --background-header: linear-gradient(135deg, #8844ee, #B07DFB);
+  --background-gradient: linear-gradient(135deg, #8844ee, #B07DFB);
   --background-sidnav: #fafbfc; 
   --hover: #B07DFB; 
 }
@@ -68,7 +70,7 @@ img {
 /* Header */
 
 .header {
-  background: var(--background-header);
+  background: var(--background-gradient);
   padding: 30px;
   display: grid; /* Criando um outro grid que não tem anda haver com o "grid geral" */
   grid-template-columns: 1fr auto; /* Criando duas colunas, uma de 1fr e outra automatica em relação ao tamanho da página*/
@@ -134,4 +136,38 @@ img {
 
 .sidenav li a:hover {
   background: var(--hover);
+}
+
+
+
+
+
+/* CONTENT */
+
+
+
+
+
+/* ANUNCIOS */
+.anuncios {
+  background: var(--background-sidnav);
+  display: grid;
+  align-content: start; /* Sendo o aling-content para o conteúdo/container e para o eixo y, na vertical */
+  padding: 30px; /* Dando um espalamento interno */
+  gap: 30px; /* Adicionando um espaçamento apenas entre os elementos, caso no @media eles acabem ficando um ao lado do outro, o gap ainda funcionará perfeitamente */
+}
+
+
+
+
+
+/* FOOTER */
+.footer {
+  background: var(--background-gradient);
+}
+
+.footer p {
+  color: #FFF;
+  text-align: center; /* Alinahndo o texto ao centro */
+  padding:30px; /* Dando um espalamento interno */
 }
