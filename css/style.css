@@ -242,6 +242,51 @@ p {
 }
 
 
+/* "p" em Destaque */
+.destaque {
+  font-size: 0.875em;
+  color: var(--hover);
+  max-width: 16em; /* Para que o parágrafo não estique muito */
+}
+
+/* Citação */
+.citacao, .atributos {
+  align-self: start; /* para que o container dos "atributos" não se espanda junto com os testox que ficam ao seu lado, alinha-se ele mesmo ao inicio, assim não ficará um espaço vazio dentro e abixou do container do atributos */
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15); /* o 1º valor é para a direira, o 2º para baixo, 3º é para ele se espalhar, e o 4º é o tamanho que ela cresce */
+  background: var(--background-gradient);
+}
+
+.citacao p {
+  font-size: 1.5em;
+  font-style: italic;
+  text-align: center; /* Centralizando o texto */
+  max-width: 500px; /* Para que o texto não pegue de ponta a ponta dentro do meu container, mas com isso teremos que alinhar o container dele*/
+  margin: 0 auto; /* E para alinhar basta dar um margin 0 em cima/baixo e automático para os lados */
+  color: #FFF;
+}
+
+/* Autor da Citação */
+.autor {
+  display: block;
+  color: rgba(203, 170, 255, 0.9);
+  text-align: end; /* Centralizando o texto */
+  padding-right: 30px;
+  font-size: 1.125em;
+}
+
+.atributos li {
+  color: #FFF;
+  font-family: 'Courier New', monospace;
+  font-size: 1.125em;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.atributos li + li{ /* Adiconando estilização apenas nas tags que são li's, mas que são seguidas de outro li */
+  border-top: 2px solid var(--hover);
+}
 
 
 
