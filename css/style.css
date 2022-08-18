@@ -22,6 +22,7 @@ img {
   --background-gradient: linear-gradient(135deg, #8844ee, #B07DFB);
   --background-sidnav: #fafbfc; 
   --hover: #B07DFB; 
+  --text: rgba(0,0,0,.7); 
 }
 
 
@@ -143,6 +144,104 @@ img {
 
 
 /* CONTENT */
+.content{
+  max-width: 900px; /* Definindo um max-width par que quando o usuário estejá em um munitor mairo, não estique tanto a linha dos textos */
+  margin: 0 auto; /* para alinhar o CONTEÚDO ao CENTRO */
+  padding: 30px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Definindo duas colunas de tamanhos prororcionais */
+  gap: 30px;
+}
+
+.titulo {
+  color: var(--hover);
+}
+
+.titulo h1{
+  font-size: 3.75em;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.titulo span {
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+
+/* CARACTERISTICAS */
+.caracteristicas {
+  display: flex; /* para um item dicar ao lado do outro */
+  align-items: flex-start; /* Como ele recebeu display flex, por padrão o flex ele faz com que o item cresce de ponta a ponta de acordo com o seu container pai */
+}
+
+.caracteristicas > div { /* Como não passei class nenhum para as div's, eu utilizo o ">" para falar especificamente com elas*/
+  width: 80px;
+  text-align: center; /* Alinhando o texto ao centro */
+  background: var(--background-gradient);
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0px rgba(44,44,44,0.15); /* o 1º valor é para a direira, o 2º para baixo, o 3º é o quanto ele vai se camuflar, e o 4º é para todos os lados */ 
+
+  /* como o conteúdo roxo sobressai o branco do span "rotulo", valos colocar ele um pouco mais abaixo do span "numero" */
+  position: relative; /* Colocando posição relativa aqui e no ".rotulo" e após isso de um "top: 2"*/
+}
+
+.caracteristicas > div:first-child { /* falando expecificamente com a primeira div */
+  margin-right: 30px;
+}
+
+.caracteristicas span {
+  display: block; /* Dando um display block para que os span's peguem de ponta a ponta */
+  color: var(--hover);
+}
+
+.numero {
+  color: var(--hover);
+  font-size: 3em;
+  line-height: 1;
+  margin: 10px auto; /* Dando margin de 10px para cima/baixo e automatico aos lados para alinhar ao centro */
+}
+
+.rotulo {
+  background: #FFF;
+  border-radius: 0 0 5px 5px; /* Fazendo a borda apenas em baixo */
+  padding: 5px 0;
+  position: relative;
+  top: 2;
+}
+
+
+
+
+.col-wide { /* É uma estilização para os itens que pegam de ponta a ponta, já que eu tenho no mínimo 3 itens que vão de ponta a ponta, é mais facil eu definir assim e apenas adicionar a classe ao meu HTML, para que não haja redundancia de código */
+  grid-column: 1 / -1; /* Com isso fará que comece da coluna 1 e se extenda por todas as outras*/
+}
+
+.imagem-1 { /* Nesta classe irá definir a quantidade de "linhas" que a imagem irá ocupar*/
+  /* grid-row: 3 / 5; */
+  grid-row: span 2; /* Sendo a mesma coisa que a linha  cima, começa na linha automática e se espando por 2 linhas */
+  align-self: end ; /* Neste caso queremos alinhas as duas imagens ao fim. Usando para quando quero alinha o texto no eixo na vertica */
+}
+
+.imagem-2 {
+  align-self: end; /* tambem alinhando o item ao final para caso o conteúdo aumente */
+}
+
+
+/* ESTILOS CONTENT */
+p {
+  font-size: 1.2em;
+  line-height: 1.6; /* modificando a altura entre as linhas */
+  letter-spacing: -0.005em; /* Isso irá alterar o espaçamento entre as letras */
+  color: var(--text);
+}
+
+.informacoes p + p { /* Se aplicando a mesma coisa que já fizemos, apenas o "p" que vem seguido de outro "p" é quem receberá a estilização */
+  margin-top: 30px; /* Com isso não adicionar espaçamento ao primeiro "p" e caso acrescente mais tags "p" dentro da div "informações", ele receberá a estilização*/
+}
+
+
 
 
 
