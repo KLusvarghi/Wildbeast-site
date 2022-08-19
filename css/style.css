@@ -15,7 +15,7 @@ a {
 img {
   display: block; /* Assim ela irá tirar uma margin que as imagens tem por padrão */
   border-radius: 5px;
-  max-width: 100%;
+  width: 100%; /* dando esse width de 100% por que a imagem por padrão tem uma largura de no máximo 300px, e no mobile ela acabará ficando apenas com essa largura e no canto, e para que ela ocupe o total de espaço é colocado um width de 100%. Acabará tirando um pouco da resolução da imagem, mas o ideal é ter uma com 600px de largura */
 }
 
 :root {
@@ -272,7 +272,7 @@ p {
   display: block;
   color: rgba(203, 170, 255, 0.9);
   text-align: end; /* Centralizando o texto */
-  padding-right: 30px;
+  padding: 15px 30px 0 0;
   font-size: 1.125em;
 }
 
@@ -299,6 +299,14 @@ p {
   align-content: start; /* Sendo o aling-content para o conteúdo/container e para o eixo y, na vertical */
   padding: 30px; /* Dando um espalamento interno */
   gap: 30px; /* Adicionando um espaçamento apenas entre os elementos, caso no @media eles acabem ficando um ao lado do outro, o gap ainda funcionará perfeitamente */
+
+  /* Para resolver o bug das imagens do anúncia que acabam ficando muito grandes e uma acaba entrando dentro da outra, podemos definir a quantidade de colunas: */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  /*
+    O "repeat quer dizer que: repita o quanto der; passando o "auto-fit" como mínimo, dizendo o seguinte: coloque o máximo de colunas com os itens existentes (não colocando colunas invisíveis, igual o auto-fill faz), de acordo com o próximo parámetro, passando assim como 2º parámetro um minmax, chegando de no mínimo 150px e no máximo 1fr
+  
+    então nesse se ele conseguir encaixar dois itens de 150px ele vai encaixar até quando der, quando não der para encaixa resse dois itens ele quebra. Fazendo tudo de acordo com o conteúdo que existe
+  */
 }
 
 
@@ -429,5 +437,23 @@ p {
   }
   to {
     right: 20px;
+  }
+}
+
+
+
+
+/* @MEDIA CONTENT */
+@media (max-width: 600px) { /* acima dos 600px, o conteúdo ainda fica em duas colunas, porém abaixo disso será dimunido para apenas uma */
+  .content {
+    grid-template-columns: auto; /* Dando valor de auto para ela se auto ajustar */
+  }
+
+  .atributos {
+    text-align: center; /* Abaixo dos 600px o terxto acabará ficando no canto esquero, par uma melhor estilização será colocado ao centro de modo responsivo */
+  }
+
+  .citacao .autor { /* Tirando o padding a direita da citação para ficar melhor visualmente */
+    padding-right: 0px;
   }
 }
