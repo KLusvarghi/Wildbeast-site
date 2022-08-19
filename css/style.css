@@ -33,10 +33,10 @@ img {
   grid-template-columns: minmax(160px, 1fr) 3fr 300px; /* Definindo a quantidade e tamanho das colunas, sendo a primeir coluna chega no mínim 160px e expande até no máxino 1fr; a segunda coluna eu qero que tenhas 3x o tamanho da primeira coluna; e a terceira coluna eu quero um valor fixo de 300px*/
 
 
-  grid-template-areas: 
   /* 
   Aqui eu poderia usar o "grid" como atalho; Nessa parte eu apenas estou dizendo o que ficará em cada lugar, par aposicionar os elementos eu terei que selecioanr a classe e ajusar com o "grid-area" 
   */
+  grid-template-areas: 
     "header header header"
     "sidenav content anuncios"
     "footer footer footer" 
@@ -314,4 +314,42 @@ p {
   color: #FFF;
   text-align: center; /* Alinahndo o texto ao centro */
   padding:30px; /* Dando um espalamento interno */
+}
+
+
+
+/* @Media do display em geral */
+
+@media (max-width: 1200px) { /* O conteúdo abaixo de 1200px será aplicado essa estilização */
+   
+  .estrutura{
+    grid-template-areas: 
+    "header header header"
+    "sidenav content content"
+    "sidenav anuncios anuncios"
+    "footer footer footer" 
+    ;
+
+  /* 
+  Porem ele aidna ficou com uma coluna inteira em branco, por lá encima definimos uma 3º coluna, podendo resolver isso redefinindo o "grid-template-columns" para: minmax(160px, 1fr) 3fr; 
+
+  ou
+
+  podemos apenas deixando a 3º coluna e repetindo o ultimo item
+  */
+  }
+}
+
+
+@media (max-width: 760px) { /* O conteúdo abaixo de 760px será aplicado essa estilização */
+  .estrutura {
+    grid-template-areas: /* Mundando tudo para 1 coluna, porem ele dará o mesmo erro que deu no @media de cima, porém para resolver ele, dessa vez será necesario mexer no grid-templae-column */
+    "header"
+    "sidenav"
+    "content"
+    "anuncios"
+    "footer" 
+    ;
+    grid-template-columns: 100%; 
+  }
 }
