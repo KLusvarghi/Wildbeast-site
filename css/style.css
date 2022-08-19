@@ -318,7 +318,7 @@ p {
 
 
 
-/* @Media do display em geral */
+/* @MEDIA DO DISPLAY GERAL */
 
 @media (max-width: 1200px) { /* O conteúdo abaixo de 1200px será aplicado essa estilização */
    
@@ -351,5 +351,83 @@ p {
     "footer" 
     ;
     grid-template-columns: 100%; 
+  }
+}
+
+
+
+
+/* @MEDIA DO MENU/HEADER */
+@media (max-width: 760px) { /* O conteúdo abaixo de 760px será aplicado essa estilização */
+
+
+  /* HEADER */
+
+  .header {
+    grid-template-columns: auto; /* O que antes era uma coluna de 1fr auto, agora será apenas uma coluna de auto */
+  }
+
+  .logo {
+    margin-bottom: 20px; /* para dar um espaçamento entre a logo e a nav */
+  }
+
+  .header nav a { /* diminuindo a tiografia para que sempre caibam um ao lado do outrp */
+    font-size: 1em;
+  }
+
+  .header li + li {
+    margin-left: 10px; /* diminuindo o espaçamentro entre os li's */
+  }
+
+
+
+
+  /* SIDNAV */
+  .sidenav ul {
+    display: flex; /* por default o li é display "block", e só de colocar ele em display flex eles já ficam um ao lado do outro, porem ficam todos juntinhos, o que não quero */
+  }
+
+  .sidnav ul li {
+    flex: 1 0 60px; /* Assim pegando de ponta a ponta; sendo o 60px o flex basis, fazsendo com que ele não diminua menos do que 60px */
+  }
+
+  .sidenav {
+    position: relative; /* Para que a seta fique encima do container "sidnav" */
+
+    padding: 0 30px; /* mantendo apenas o panding dos lados, principamente o de baixo por conta que estava com 2 padding de 30px */
+
+    overflow-x: auto; /* Criando uma barra de scroll na horizontal, esse atributo dis assim: se quebrar o container do tamanho totla da coluna, coloca uma barra nele */
+
+    /* falando com o safari e veções mais antigas do crome. sendo uma prorpiedade especifica do "webkit" */
+    --webkit-overflow-scrolling: touch; /* falando com o overflow, que é oque sai da tela, e falando com otouch (para mobile*/
+
+    /* e para a microsoft: */
+    -ms-overflow-style: -ms-autohiding-scrollbar; /* servindo para escronder a "barra de scroll" em dispositivos mobile */
+  }
+
+  .sidenav li a {
+    margin: 30px 30px 30px 0; /* Colocando 30px em todos, menos no lado direito */
+  }
+
+  /* criando set aindicativc */
+
+  .sidenav::after { /* falando com o pseu do element */
+    content: '→';
+    position: absolute; /* para que seja possivel posicionar ela */
+    top: 5px; /* Caso seja feito assim, ela jogará a setá lá para o body, para que faça referencia ao sidnav que queremos, temos que colocar um posicion "relative" nele tambem */
+    right: 30px; /* Posicionando a 30px a da minha direita */
+    color: rgba(0, 0, 0, .3);
+    animation: arrow .5s ease-in 0s infinite alternate; /* colocando a animação, o nome dela; o tempo; a velociadade, sendo ela começando mais rápido e ficando mais lenta; 0s quer dizer que ele não irá esperar tempo nenhum para começar; "alternate" quer dizer que ele vai do 30 para o 20 e depois volta do 20 para o 30*/
+  }
+
+}
+
+/* Animação para a seta */
+@keyframes arrow {
+  from {
+    right: 30px;
+  }
+  to {
+    right: 20px;
   }
 }
